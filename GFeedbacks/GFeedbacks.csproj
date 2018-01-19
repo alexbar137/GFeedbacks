@@ -195,6 +195,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <None Include="GFeedbacks_1_TemporaryKey.pfx" />
     <None Include="GFeedbacks_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -236,10 +237,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>GFeedbacks_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>GFeedbacks_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>6DA7AD7D7289A5CFA4F512645505CB5F1B4E1B8B</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>8E61DE616851D44ED5CA43284E3DDD34909CA743</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
