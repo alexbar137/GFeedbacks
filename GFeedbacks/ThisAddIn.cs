@@ -5,28 +5,55 @@ using System.Text;
 using System.Xml.Linq;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
+using System.Threading.Tasks;
+using GFeedbacks.Implementations;
+using GFeedbacks.Interfaces;
 
 namespace GFeedbacks
 {
     public partial class ThisAddIn
     {
-        private void ThisAddIn_Startup(object sender, System.EventArgs e)
+        Outlook.MAPIFolder inBox;
+        Outlook.Items items;
+        IAppSettings settings;
+
+
+        internal void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            GetFolders();
+            settings = new AppSettings();
+            settings.GetSettings();
+            items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(Items_ItemAdd);
         }
 
-        private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
+        internal void Items_ItemAdd(object Item)
+        { 
+            IProcessor pr = new Processor(settings);
+            pr.Root = Application.ActiveExplorer().Session.Folders;
+            Task task = new Task(() => pr.Process(Item as Outlook.MailItem));
+            task.Start();
+        }
+
+        internal void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
             // Note: Outlook no longer raises this event. If you have code that 
             //    must run when Outlook shuts down, see http://go.microsoft.com/fwlink/?LinkId=506785
         }
 
+        internal void GetFolders()
+        {
+
+            if (inBox == null) inBox = Application.ActiveExplorer().Session.
+                    GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
+            if (items == null) items = inBox.Items;
+        }
         #region VSTO generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InternalStartup()
+        internal void InternalStartup()
         {
             this.Startup += new System.EventHandler(ThisAddIn_Startup);
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);

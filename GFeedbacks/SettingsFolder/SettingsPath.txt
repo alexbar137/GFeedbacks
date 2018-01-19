@@ -1,0 +1,1 @@
+﻿SettingsFolder\Ggl.ini
