@@ -14,20 +14,26 @@ namespace NUnitTest
     public class ProcessorTests
     {
         IAppSettings settings;
+        List<Setting> settingsList;
 
         [SetUp]
         public void Init()
         {
             
-            List<Setting> settingsList = new List<Setting>
+            settingsList = new List<Setting>
             {
                 new Setting() {Email = "Hello", Subj = "Buy" },
                 new Setting() {Email = "Bonjour", Subj = "Arevour" }
             };
 
             settings = Substitute.For<IAppSettings>();
-            settings._settingsList.Returns(settingsList);
+            settings.GetEnumerator().Returns(Iterate());
 
+        }
+
+        public IEnumerator<Setting> Iterate()
+        {
+            foreach (Setting s in settingsList) yield return s;
         }
 
 
