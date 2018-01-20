@@ -14,22 +14,22 @@ namespace GFeedbacks
     public partial class ThisAddIn
     {
         Outlook.MAPIFolder inBox;
-        Outlook.Items items;
         IAppSettings settings;
 
 
         internal void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             GetFolders();
-            settings = new AppSettings();
-            settings.GetSettings();
-            items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(Items_ItemAdd);
+            settings = new JSONAppSettings();
+            inBox.Items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(Items_ItemAdd);
         }
 
         internal void Items_ItemAdd(object Item)
-        { 
-            IProcessor pr = new Processor(settings);
-            pr.Root = Application.ActiveExplorer().Session.Folders;
+        {
+            IProcessor pr = new Processor(settings)
+            {
+                Root = Application.ActiveExplorer().Session.Folders
+            };
             Task task = new Task(() => pr.Process(Item as Outlook.MailItem));
             task.Start();
         }
@@ -43,9 +43,8 @@ namespace GFeedbacks
         internal void GetFolders()
         {
 
-            if (inBox == null) inBox = Application.ActiveExplorer().Session.
+            inBox = inBox?? Application.ActiveExplorer().Session.
                     GetDefaultFolder(Outlook.OlDefaultFolders.olFolderInbox);
-            if (items == null) items = inBox.Items;
         }
         #region VSTO generated code
 

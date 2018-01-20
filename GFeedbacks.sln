@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GFeedbacks", "GFeedbacks\GFeedbacks.csproj", "{F9873128-6F17-4346-8895-01DF9EB55BD2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GFeedbacksTests", "GFeedbacksTests\GFeedbacksTests.csproj", "{E9182B8E-CA97-483F-9634-855B299A2505}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTest", "NUnitTest\NUnitTest.csproj", "{5E344375-769E-4A19-B74D-BC282AF54293}"
 EndProject
@@ -19,10 +17,6 @@ Global
 		{F9873128-6F17-4346-8895-01DF9EB55BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9873128-6F17-4346-8895-01DF9EB55BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9873128-6F17-4346-8895-01DF9EB55BD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9182B8E-CA97-483F-9634-855B299A2505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9182B8E-CA97-483F-9634-855B299A2505}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9182B8E-CA97-483F-9634-855B299A2505}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9182B8E-CA97-483F-9634-855B299A2505}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E344375-769E-4A19-B74D-BC282AF54293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E344375-769E-4A19-B74D-BC282AF54293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E344375-769E-4A19-B74D-BC282AF54293}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D6DB51A-838E-495E-9FE4-D58DCC819FAE}
 	EndGlobalSection
 EndGlobal

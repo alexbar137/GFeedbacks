@@ -1,1 +1,1 @@
-﻿SettingsFolder\Ggl.ini
+﻿.\SettingsFolder\Ggl.ini

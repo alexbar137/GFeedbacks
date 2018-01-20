@@ -1,4 +1,5 @@
 ﻿using GFeedbacks.Implementations;
+using Microsoft.Office.Interop.Outlook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.Interfaces
 {
-    public interface IAppSettings: IEnumerable<ISetting>
+    interface IParser
     {
-        new IEnumerator<ISetting> GetEnumerator();
+        LQA Parse(MailItem item);
     }
 }
