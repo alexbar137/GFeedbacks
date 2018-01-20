@@ -21,7 +21,7 @@ namespace NUnitTest
 
         ISetting settings;
 
-        /*
+        
         [SetUp]
         public void Init()
         {
@@ -49,12 +49,28 @@ namespace NUnitTest
             emptyMail.Body.Returns("");
 
             settings = Substitute.For<ISetting>();
-            settings.TargetLang.Returns(@"^\D{2}");
-            settings.TargetLangSource.Returns("Subject");
-            settings.ResultSource.Returns("Body");
-            settings.ResultPass.Returns("Passed");
-            settings.ResultFail.Returns("Fail");
-            settings.Result.Returns(@"Audit Status:\s(\w*)");
+            ParsingItem targetLang = new ParsingItem()
+            {
+                Pattern = @"^\D{2}",
+                Source = SourceType.Subject
+            };
+            settings.TargetLang.Returns(targetLang);
+
+            ParsingItem result = new ParsingItem()
+            {
+                Pattern = @"Audit Status:\s(\w*)",
+                Source = SourceType.Body,
+                Group = 1
+            };
+            settings.Result.Returns(result);
+            ResParser resParser = new ResParser()
+            {
+                Pass = "Passed",
+                Fail = "Fail"
+            };
+
+            settings.ResultParser.Returns(resParser);
+
         }
 
         static object[] TestCasesResult =
@@ -92,7 +108,7 @@ namespace NUnitTest
             Assert.NotNull(res);
             Assert.AreEqual(exp, res == result);
         }
-        */
+        
 
 
     }

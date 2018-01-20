@@ -29,8 +29,28 @@ namespace GFeedbacks.Implementations
 
         internal string GetTargetLang(MailItem item)
         {
-            throw new NotImplementedException();
+            switch(_settings.TargetLang.Source)
+            {
+                case SourceType.Static:
+                    return _settings.TargetLang.Pattern;
+                case SourceType.Body:
+                    return ProcessRegExp(item.Body, _settings.TargetLang);
+                case SourceType.Subject:
+                    return ProcessRegExp(item.Subject, _settings.TargetLang);
+                default:
+                    return String.Empty;
+            }
+
             
+        }
+
+        private string ProcessRegExp(string text, ParsingItem settings)
+        {
+            Regex reg = new Regex(settings.Pattern);
+            if (settings.Group !=null && settings.Group != -1)
+            { 
+                return reg.Matches(text)[(int)settings.Group].Value;
+            }
         }
 
         internal bool? GetResult(MailItem item)

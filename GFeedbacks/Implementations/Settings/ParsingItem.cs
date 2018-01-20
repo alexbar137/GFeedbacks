@@ -12,6 +12,6 @@ namespace GFeedbacks.Implementations
         public string Name { get; set; }
         public string Pattern { get; set; }
         public SourceType Source { get; set; }
-        public int Group { get; set; }
+        public int? Group { get; set; }
     }
 }

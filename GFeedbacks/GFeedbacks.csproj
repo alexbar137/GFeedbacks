@@ -169,16 +169,16 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Implementations\AppSettings.cs" />
+    <Compile Include="Implementations\Settings\AppSettings.cs" />
     <Compile Include="Implementations\ErrorLogger.cs" />
     <Compile Include="Implementations\ResParser.cs" />
     <Compile Include="Interfaces\ISetting.cs" />
     <Compile Include="Interfaces\IParsingItem.cs" />
-    <Compile Include="Implementations\JSONSetting.cs" />
+    <Compile Include="Implementations\Settings\JSONSetting.cs" />
     <Compile Include="Implementations\LQA.cs" />
     <Compile Include="Implementations\MailParser.cs" />
     <Compile Include="Implementations\Mover.cs" />
-    <Compile Include="Implementations\ParsingItem.cs" />
+    <Compile Include="Implementations\Settings\ParsingItem.cs" />
     <Compile Include="Implementations\Processor.cs" />
     <Compile Include="Interfaces\IAppSettings.cs" />
     <Compile Include="Interfaces\IErrorLogger.cs" />

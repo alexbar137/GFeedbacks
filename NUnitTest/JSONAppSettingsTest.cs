@@ -14,12 +14,24 @@ namespace NUnitTest
     [TestFixture]
     class JsonSettingsTest
     {
-        ISetting settings;
+        JSONAppSettings settings;
         [SetUp]
         public void Init()
         {
+            settings = new JSONAppSettings();
+        }
 
-           
+        [Test]
+        public void TestReadJson()
+        {
+            
+            Assert.IsTrue(settings.Count() > 0);
+        }
+
+        [Test]
+        public void TestCorrectJsonRead()
+        {
+            Assert.IsTrue(settings.Any(s => s.Name == "Google"));
         }
     }
 }
