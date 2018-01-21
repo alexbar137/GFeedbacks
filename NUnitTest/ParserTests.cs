@@ -33,6 +33,7 @@ namespace NUnitTest
                 Workflow: segmented");
             firstMail.Subject.Returns(@"ru_Tachyon_825569_Request_1_of_1.html - An LQE Audit Report has been shared with you");
             firstMail.SenderEmailAddress.Returns(@"no-reply@gloc-lqe-tool.appspotmail.com");
+            firstMail.ReceivedTime.Returns(new DateTime(2017, 11, 1));
 
             secondMail.Body.Returns(@"Product: Gmail	
                  Project ID: 824585	Document ID: 0051x6o01tneaot0d8g0
@@ -44,6 +45,7 @@ namespace NUnitTest
                     Workflow: segmented");
             secondMail.Subject.Returns(@"be_Gmail_824585_Request_1_of_1.html - An LQE Audit Report has been shared with you");
             secondMail.SenderEmailAddress.Returns(@"no-reply@gloc-lqe-tool.appspotmail.com");
+            secondMail.ReceivedTime.Returns(new DateTime(2017, 12, 1));
 
             emptyMail.Subject.Returns("");
             emptyMail.Body.Returns("");
@@ -85,6 +87,14 @@ namespace NUnitTest
                 Group = 2
             };
             settings.WordCount.Returns(wordCount);
+
+            ParsingItem projCode = new ParsingItem()
+            {
+                Pattern = @"(.*)\s-\sAn",
+                Source = SourceType.Subject,
+                Group = 1
+            };
+            settings.ProjectCode.Returns(projCode);
 
         }
 
@@ -152,6 +162,35 @@ namespace NUnitTest
         {
             MailParser parser = new MailParser(settings);
             Assert.AreEqual(res, parser.Parse(item).WordCount);
+        }
+
+
+        //Project Code Testing
+        static object[] TestCasesProjCode =
+        {
+            new object[] {firstMail, "ru_Tachyon_825569_Request_1_of_1.html"},
+            new object[] {secondMail, "be_Gmail_824585_Request_1_of_1.html" }
+        };
+
+        [Test, TestCaseSource("TestCasesProjCode")]
+        public void TestParse_ProjCode(MailItem item, string proj)
+        {
+            MailParser parser = new MailParser(settings);
+            Assert.AreEqual(proj, parser.Parse(item).ProjCode);
+        }
+
+        //Date Testing
+        static object[] TestCasesDate =
+        {
+            new object[] {firstMail, new DateTime(2017, 11, 1)},
+            new object[] {secondMail, new DateTime(2017, 12, 1)}
+        };
+
+        [Test, TestCaseSource("TestCasesDate")]
+        public void TestParse_Date(MailItem item, DateTime expDate)
+        {
+            MailParser parser = new MailParser(settings);
+            Assert.AreEqual(expDate, parser.Parse(item).Date);
         }
 
 

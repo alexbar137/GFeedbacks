@@ -32,13 +32,16 @@ namespace GFeedbacks.Implementations
         /// <returns>Information about LQA report</returns>
         public LQA Parse(MailItem item)
         {
-            
+
             LQA report = new LQA()
             {
                 TargetLang = GetParsedData(item, _settings.TargetLang),
                 SourceLang = GetParsedData(item, _settings.SourceLang),
                 Result = ParseResult(GetParsedData(item, _settings.Result)),
-                WordCount = int.Parse(GetParsedData(item, _settings.WordCount))
+                WordCount = int.Parse(GetParsedData(item, _settings.WordCount)),
+                ProjCode = GetParsedData(item, _settings.ProjectCode),
+                Date = item.ReceivedTime,
+                Content = item.Body
             };
             return report;
         }

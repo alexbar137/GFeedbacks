@@ -33,5 +33,13 @@ namespace NUnitTest
         {
             Assert.IsTrue(settings.Any(s => s.Name == "Google"));
         }
+
+        [Test]
+        public void TestJsonRead_slash()
+        {
+            string exp = @"Word Count:\s(\w*)\s\((\w*)";
+            string actual = settings.FirstOrDefault(s => s.Name == "Google").WordCount.Pattern;
+            Assert.AreEqual(exp, actual);
+        }
     }
 }
