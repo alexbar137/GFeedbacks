@@ -16,7 +16,6 @@ namespace GFeedbacks
         Outlook.MAPIFolder inBox;
         IAppSettings settings;
 
-
         internal void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             GetFolders();
