@@ -189,6 +189,7 @@
     <Compile Include="Implementations\Settings\AppSettings.cs" />
     <Compile Include="Implementations\ErrorLogger.cs" />
     <Compile Include="Implementations\ResParser.cs" />
+    <Compile Include="Implementations\SharePointUpdater\SharePointContextProvider.cs" />
     <Compile Include="Interfaces\ISetting.cs" />
     <Compile Include="Interfaces\IParsingItem.cs" />
     <Compile Include="Implementations\Settings\JSONSetting.cs" />

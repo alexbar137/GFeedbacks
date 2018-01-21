@@ -26,6 +26,7 @@ namespace GFeedbacks.Implementations
         public ParsingItem ProjectCode { get; set; }
         public ResParser ResultParser { get; set; }
         public Dictionary<string, int> Languages { get; set; }
+        public string SharePointSite { get; set; }
     }
 
 }

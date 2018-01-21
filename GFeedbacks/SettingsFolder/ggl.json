@@ -9,6 +9,7 @@
   "Team": 3,
   "Email": "no-reply@gloc-lqe-tool.appspotmail.com",
   "Subj": "LQE Audit",
+  "SharePointSite": "http://inside.office.palex/lqa/_vti_bin/ListData.svc",
   "SourceLang": {
     "Name": null,
     "Pattern": "en",

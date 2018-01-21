@@ -22,5 +22,6 @@ namespace GFeedbacks.Implementations
         ResParser ResultParser { get; set; }
         ParsingItem WordCount { get; set; }
         Dictionary<string, int> Languages { get; set; }
+        string SharePointSite { get; set; }
     }
 }
