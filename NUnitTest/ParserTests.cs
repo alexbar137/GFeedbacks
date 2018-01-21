@@ -56,6 +56,13 @@ namespace NUnitTest
             };
             settings.TargetLang.Returns(targetLang);
 
+            ParsingItem sourceLang = new ParsingItem()
+            {
+                Pattern = "en",
+                Source = SourceType.Static
+            };
+            settings.SourceLang.Returns(sourceLang);
+
             ParsingItem result = new ParsingItem()
             {
                 Pattern = @"Audit Status:\s(\w*)",
@@ -73,7 +80,7 @@ namespace NUnitTest
 
         }
 
-
+        //Target lang testing
         public class TestCaseFactory
         {
             public static IEnumerable<TestCaseData> TestCasesLangs
@@ -95,6 +102,7 @@ namespace NUnitTest
             Assert.AreEqual(exp, parser.Parse(item).TargetLang == lang);
         }
 
+        //Result parsing tests
         static object[] TestCasesResult =
         {
             new object[] { firstMail, LQAResult.Fail },
@@ -108,6 +116,19 @@ namespace NUnitTest
             LQAResult? res = parser.Parse(item).Result;
             Assert.NotNull(res);
             Assert.AreEqual(result, res);
+        }
+
+        static object[] TestCasesSourceLang =
+        {
+            new object[] {firstMail, "en"},
+            new object[] {secondMail, "en"}
+        };
+        //SourceLang Testing
+        [Test, TestCaseSource("TestCasesSourceLang")]
+        public void TestParse_SourceLang(MailItem item, string lang)
+        {
+            MailParser parser = new MailParser(settings);
+            Assert.AreEqual(lang, parser.Parse(item).SourceLang);
         }
         
 
