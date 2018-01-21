@@ -40,22 +40,41 @@ namespace GFeedbacks.Implementations
                 default:
                     return String.Empty;
             }
-
-            
         }
 
         private string ProcessRegExp(string text, ParsingItem settings)
         {
             Regex reg = new Regex(settings.Pattern);
-            if (settings.Group !=null && settings.Group != -1)
-            { 
-                return reg.Matches(text)[(int)settings.Group].Value;
+            if (settings.Group != null && settings.Group != -1)
+            {
+                return reg.Match(text).Groups[(int)settings.Group].Value;
+            }
+            else
+                return reg.Match(text).Value;
+        }
+
+        internal LQAResult? GetResult(MailItem item)
+        {
+            switch (_settings.Result.Source)
+            {
+                case SourceType.Static:
+                    return ParseResult(_settings.Result.Pattern);
+                case SourceType.Body:
+                    return ParseResult(ProcessRegExp(item.Body, _settings.Result));
+                case SourceType.Subject:
+                    return ParseResult(ProcessRegExp(item.Subject, _settings.Result));
+                default:
+                    return null;
             }
         }
 
-        internal bool? GetResult(MailItem item)
+        internal LQAResult? ParseResult(string pattern)
         {
-            throw new NotImplementedException();
+            if (pattern == _settings.ResultParser.Pass) return LQAResult.Pass;
+            if (pattern == _settings.ResultParser.Fail) return LQAResult.Fail;
+            if (pattern == _settings.ResultParser.Recall) return LQAResult.Recall;
+            return null;
+
         }
     }
 }

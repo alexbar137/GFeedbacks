@@ -73,11 +73,6 @@ namespace NUnitTest
 
         }
 
-        static object[] TestCasesResult =
-        {
-            new object[] { firstMail, false, true },
-            new object[] { secondMail, true, true }
-        };
 
         public class TestCaseFactory
         {
@@ -100,13 +95,19 @@ namespace NUnitTest
             Assert.AreEqual(exp, parser.Parse(item).TargetLang == lang);
         }
 
+        static object[] TestCasesResult =
+        {
+            new object[] { firstMail, LQAResult.Fail },
+            new object[] { secondMail, LQAResult.Pass }
+        };
+
         [Test, TestCaseSource("TestCasesResult")]
-        public void TestParse_Result(MailItem item, bool? result, bool exp)
+        public void TestParse_Result(MailItem item, LQAResult result)
         {
             MailParser parser = new MailParser(settings);
-            bool? res = parser.Parse(item).Result;
+            LQAResult? res = parser.Parse(item).Result;
             Assert.NotNull(res);
-            Assert.AreEqual(exp, res == result);
+            Assert.AreEqual(result, res);
         }
         
 

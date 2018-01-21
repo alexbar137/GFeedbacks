@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.Implementations
 {
-    class LQA
+    public enum LQAResult { Pass, Fail, Recall}
+
+    public class LQA
     {
        
-        public bool? Result { get; set; }
+        public LQAResult? Result { get; set; }
         public int? Wc { get; set; }
         public string Lang { get; set; }
         public string ProjCode { get; set; }
