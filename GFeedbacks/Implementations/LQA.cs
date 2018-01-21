@@ -12,7 +12,7 @@ namespace GFeedbacks.Implementations
     {
        
         public LQAResult? Result { get; set; }
-        public int? Wc { get; set; }
+        public int? WordCount { get; set; }
         public string Lang { get; set; }
         public string ProjCode { get; set; }
         public DateTime Date { get; set; }

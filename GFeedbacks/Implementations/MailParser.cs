@@ -32,44 +32,33 @@ namespace GFeedbacks.Implementations
         /// <returns>Information about LQA report</returns>
         public LQA Parse(MailItem item)
         {
+            
             LQA report = new LQA()
             {
-                TargetLang = GetTargetLang(item),
-                SourceLang = GetSourceLang(item),
-                Result = GetResult(item)
+                TargetLang = GetParsedData(item, _settings.TargetLang),
+                SourceLang = GetParsedData(item, _settings.SourceLang),
+                Result = ParseResult(GetParsedData(item, _settings.Result)),
+                WordCount = int.Parse(GetParsedData(item, _settings.WordCount))
             };
             return report;
         }
 
-        private string GetSourceLang(MailItem item)
+
+        internal string GetParsedData(MailItem item, ParsingItem setting)
         {
-            switch (_settings.SourceLang.Source)
+            switch (setting.Source)
             {
                 case SourceType.Static:
-                    return _settings.SourceLang.Pattern;
+                    return setting.Pattern;
                 case SourceType.Body:
-                    return ProcessRegExp(item.Body, _settings.SourceLang);
+                    return ProcessRegExp(item.Body, setting);
                 case SourceType.Subject:
-                    return ProcessRegExp(item.Subject, _settings.SourceLang);
+                    return ProcessRegExp(item.Subject, setting);
                 default:
                     return String.Empty;
             }
         }
 
-        internal string GetTargetLang(MailItem item)
-        {
-            switch(_settings.TargetLang.Source)
-            {
-                case SourceType.Static:
-                    return _settings.TargetLang.Pattern;
-                case SourceType.Body:
-                    return ProcessRegExp(item.Body, _settings.TargetLang);
-                case SourceType.Subject:
-                    return ProcessRegExp(item.Subject, _settings.TargetLang);
-                default:
-                    return String.Empty;
-            }
-        }
 
         internal string ProcessRegExp(string text, ParsingItem settings)
         {
@@ -82,20 +71,6 @@ namespace GFeedbacks.Implementations
                 return reg.Match(text).Value;
         }
 
-        internal LQAResult? GetResult(MailItem item)
-        {
-            switch (_settings.Result.Source)
-            {
-                case SourceType.Static:
-                    return ParseResult(_settings.Result.Pattern);
-                case SourceType.Body:
-                    return ParseResult(ProcessRegExp(item.Body, _settings.Result));
-                case SourceType.Subject:
-                    return ParseResult(ProcessRegExp(item.Subject, _settings.Result));
-                default:
-                    return null;
-            }
-        }
 
         internal LQAResult? ParseResult(string pattern)
         {

@@ -28,7 +28,7 @@ namespace NUnitTest
             firstMail.Body.Returns(@"Product: Tachyon Project ID: 825569  Document ID: 009ulyx01tnxczq0sb9c
                 Review Vendor: VistaTEC Vendor ID: Moravia  Translator ID: 004 - be_0300@004vendor.com    
                 Reviewer Account: 002 - be_0002@002vendor.com Reviewer ID: 002 - BE_0002    
-                Audit Status: Fail  Word Count: 121(57) > Errors 1K: 3.33 
+                Audit Status: Fail  Word Count: 121 (57) > Errors 1K: 3.33 
                 LQE Date: 20 - Jan - 2018 02:59:45 UTC  
                 Workflow: segmented");
             firstMail.Subject.Returns(@"ru_Tachyon_825569_Request_1_of_1.html - An LQE Audit Report has been shared with you");
@@ -40,7 +40,7 @@ namespace NUnitTest
                    Translator ID: 004-be_0300@004vendor.com	
                    Reviewer Account: 002-be_0002@002vendor.com	
                    Reviewer ID: 002-BE_0002	Audit Status: Passed	
-                   Word Count: 79 (79)> 	Errors 1K: 0.00	LQE Date: 19-Jan-2018 18:58:00 UTC	
+                   Word Count: 79 (79) > 	Errors 1K: 0.00	LQE Date: 19-Jan-2018 18:58:00 UTC	
                     Workflow: segmented");
             secondMail.Subject.Returns(@"be_Gmail_824585_Request_1_of_1.html - An LQE Audit Report has been shared with you");
             secondMail.SenderEmailAddress.Returns(@"no-reply@gloc-lqe-tool.appspotmail.com");
@@ -77,6 +77,14 @@ namespace NUnitTest
             };
 
             settings.ResultParser.Returns(resParser);
+
+            ParsingItem wordCount = new ParsingItem()
+            {
+                Pattern = @"Word Count:\s(\w*)\s\((\w*)",
+                Source = SourceType.Body,
+                Group = 2
+            };
+            settings.WordCount.Returns(wordCount);
 
         }
 
@@ -118,19 +126,33 @@ namespace NUnitTest
             Assert.AreEqual(result, res);
         }
 
+        //SourceLang Testing
         static object[] TestCasesSourceLang =
         {
             new object[] {firstMail, "en"},
             new object[] {secondMail, "en"}
         };
-        //SourceLang Testing
+       
         [Test, TestCaseSource("TestCasesSourceLang")]
         public void TestParse_SourceLang(MailItem item, string lang)
         {
             MailParser parser = new MailParser(settings);
             Assert.AreEqual(lang, parser.Parse(item).SourceLang);
         }
-        
+
+        //Wordcount Testing
+        static object[] TestCasesWordCount =
+        {
+            new object[] {firstMail, 57},
+            new object[] {secondMail, 79}
+        };
+
+        [Test, TestCaseSource("TestCasesWordCount")]
+        public void TestParse_WordCount(MailItem item, int res)
+        {
+            MailParser parser = new MailParser(settings);
+            Assert.AreEqual(res, parser.Parse(item).WordCount);
+        }
 
 
     }
