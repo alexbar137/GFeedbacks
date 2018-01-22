@@ -30,9 +30,10 @@ namespace GFeedbacks.Implementations
                 IMover mv = new Mover(Root);
                 mv.Move(item, setting.TargetMailFolder);
                 IParser parser = new MailParser(setting);
-                LQA report = parser.Parse(item);
+                IReport report = parser.Parse(item);
                 SharePointUtilities provider = new SharePointUtilities(setting);
-                _context = provider.Context;
+                SPUpdater updater = new SPUpdater(provider);
+                updater.AddItem(report, provider.FindReport(report));
 
 
             }
