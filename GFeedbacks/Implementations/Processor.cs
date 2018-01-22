@@ -31,7 +31,7 @@ namespace GFeedbacks.Implementations
                 mv.Move(item, setting.TargetMailFolder);
                 IParser parser = new MailParser(setting);
                 LQA report = parser.Parse(item);
-                FreelancersContextProvider provider = new FreelancersContextProvider(setting);
+                SharePointUtilities provider = new SharePointUtilities(setting);
                 _context = provider.Context;
 
 

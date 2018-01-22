@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GFeedbacks.Implementations;
+using GFeedbacks.Interfaces;
 
 namespace GFeedbacks.Implementations
 {
@@ -27,6 +28,7 @@ namespace GFeedbacks.Implementations
         public ResParser ResultParser { get; set; }
         public Dictionary<string, int> Languages { get; set; }
         public string SharePointSite { get; set; }
+        public string FeedbackType { get; set; }
     }
 
 }

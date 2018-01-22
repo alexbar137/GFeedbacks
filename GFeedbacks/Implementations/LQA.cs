@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GFeedbacks.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.Implementations
 {
-    public enum LQAResult { Pass, Fail, Recall}
+    
 
-    public class LQA
+    public class LQA : IReport
     {
        
         public LQAResult? Result { get; set; }

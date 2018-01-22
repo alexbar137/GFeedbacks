@@ -1,7 +1,8 @@
-﻿using GFeedbacks.Interfaces;
+﻿using GFeedbacks.Implementations;
+using GFeedbacks.Interfaces;
 using System.Collections.Generic;
 
-namespace GFeedbacks.Implementations
+namespace GFeedbacks.Interfaces
 {
     public interface ISetting
     {
@@ -23,5 +24,6 @@ namespace GFeedbacks.Implementations
         ParsingItem WordCount { get; set; }
         Dictionary<string, int> Languages { get; set; }
         string SharePointSite { get; set; }
+        string FeedbackType { get; set; }
     }
 }

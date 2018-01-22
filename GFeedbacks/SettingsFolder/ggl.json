@@ -7,6 +7,7 @@
   "Account": 5,
   "Client": 114,
   "Team": 3,
+  "FeedbackType":  "LQA",
   "Email": "no-reply@gloc-lqe-tool.appspotmail.com",
   "Subj": "LQE Audit",
   "SharePointSite": "http://inside.office.palex/lqa/_vti_bin/ListData.svc",

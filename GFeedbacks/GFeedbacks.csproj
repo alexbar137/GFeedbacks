@@ -186,10 +186,12 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Implementations\SharePointUpdater\SPUpdater.cs" />
+    <Compile Include="Interfaces\IReport.cs" />
     <Compile Include="Implementations\Settings\AppSettings.cs" />
     <Compile Include="Implementations\ErrorLogger.cs" />
     <Compile Include="Implementations\ResParser.cs" />
-    <Compile Include="Implementations\SharePointUpdater\SharePointContextProvider.cs" />
+    <Compile Include="Implementations\SharePointUpdater\SharePointUtilities.cs" />
     <Compile Include="Interfaces\ISetting.cs" />
     <Compile Include="Interfaces\IParsingItem.cs" />
     <Compile Include="Implementations\Settings\JSONSetting.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Interfaces\IParser.cs" />
     <Compile Include="Interfaces\IProcessor.cs" />
     <Compile Include="Interfaces\IResultParser.cs" />
+    <Compile Include="Interfaces\ISPUpdater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
