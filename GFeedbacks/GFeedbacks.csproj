@@ -186,6 +186,12 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="UI\GFeedbackRibbon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\GFeedbackRibbon.Designer.cs">
+      <DependentUpon>GFeedbackRibbon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Implementations\SharePointUpdater\SPUpdater.cs" />
     <Compile Include="Interfaces\IReport.cs" />
     <Compile Include="Implementations\Settings\AppSettings.cs" />
@@ -210,6 +216,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="UI\GFeedbackRibbon.resx">
+      <DependentUpon>GFeedbackRibbon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
