@@ -38,32 +38,39 @@
             this.Feedbacks = this.Factory.CreateRibbonTab();
             this.GFeedback = this.Factory.CreateRibbonGroup();
             this.Settings = this.Factory.CreateRibbonButton();
+            this.button1 = this.Factory.CreateRibbonButton();
             this.Feedbacks.SuspendLayout();
             this.GFeedback.SuspendLayout();
             this.SuspendLayout();
             // 
             // Feedbacks
             // 
-            this.Feedbacks.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.Feedbacks.ControlId.OfficeId = "FeedbacksTab";
             this.Feedbacks.Groups.Add(this.GFeedback);
             this.Feedbacks.Label = "Feedbacks";
             this.Feedbacks.Name = "Feedbacks";
             // 
             // GFeedback
             // 
+            this.GFeedback.Items.Add(this.button1);
             this.GFeedback.Items.Add(this.Settings);
             this.GFeedback.Label = "Feedbacks";
             this.GFeedback.Name = "GFeedback";
             // 
             // Settings
             // 
-            this.Settings.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.Settings.Image = ((System.Drawing.Image)(resources.GetObject("Settings.Image")));
             this.Settings.Label = "Settings";
             this.Settings.Name = "Settings";
             this.Settings.ShowImage = true;
             this.Settings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Label = "Send to SharePoint";
+            this.button1.Name = "button1";
+            this.button1.ShowImage = true;
             // 
             // GFeedbackRibbon
             // 
@@ -80,10 +87,10 @@
         }
 
         #endregion
-
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab Feedbacks;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup GFeedback;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton Settings;
+        public Microsoft.Office.Tools.Ribbon.RibbonTab Feedbacks;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
     }
 
     partial class ThisRibbonCollection
