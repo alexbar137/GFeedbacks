@@ -61,6 +61,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -83,6 +84,7 @@
     <Compile Include="JSONAppSettingsTest.cs" />
     <Compile Include="SharePointContextTests.cs" />
     <Compile Include="SUPdaterTests.cs" />
+    <Compile Include="TestResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

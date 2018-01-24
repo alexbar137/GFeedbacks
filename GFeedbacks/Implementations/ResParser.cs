@@ -7,6 +7,7 @@ using GFeedbacks.Interfaces;
 
 namespace GFeedbacks.Implementations
 {
+    [Serializable]
     public class ResParser : IResultParser
     {
         public string Pass { get; set; }

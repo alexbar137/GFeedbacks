@@ -1,6 +1,6 @@
 {
-  "Name": "Default Profile",
-  "TargetMailFolder": "Google Feedbacks",
+  "Name": "TestProfile",
+  "TargetMailFolder": "Hello",
   "ReportFolder": "D:\\GFeedbacks",
   "LogFolder": "D:\\GFeedbacks",
   "Pm": 117,
@@ -8,9 +8,9 @@
   "Client": 114,
   "Team": 3,
   "FeedbackType":  "LQA",
-  "Email": "no-reply@gloc-lqe-tool.appspotmail.com",
+  "Email": "abc@palex.ru",
   "Subj": "LQE Audit",
-  "SharePointSite": "http://inside.office.palex/lqa/_vti_bin/ListData.svc",
+  "SharePointSite": "http://test",
   "SourceLang": {
     "Name": null,
     "Pattern": "en",

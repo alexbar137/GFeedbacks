@@ -11,6 +11,12 @@ namespace GFeedbacks.Implementations.SharePointUpdater
 {
     class SPUpdater : ISPUpdater
     {
+        internal Dictionary<LQAResult?, string> _results = new Dictionary<LQAResult?, string>()
+        {
+            { LQAResult.Pass, "Pass" },
+            {LQAResult.Fail, "Fail" },
+            {LQAResult.Recall, "Recall" }
+        };
         internal SharePointUtilities _utils;
         internal ISetting _settings;
         public SPUpdater(SharePointUtilities utils)
@@ -30,18 +36,7 @@ namespace GFeedbacks.Implementations.SharePointUpdater
 
         internal FeedbacksItem Map(IReport report, FeedbacksItem item)
         {
-            switch(report.Result)
-            {
-                case (LQAResult.Pass):
-                    item.ResultValue = "Pass";
-                    break;
-                case (LQAResult.Fail):
-                    item.ResultValue = "Fail";
-                    break;
-                case (LQAResult.Recall):
-                    item.ResultValue = "Recall";
-                    break;
-            }
+            item.ResultValue = _results[report.Result];
             item.Wordcount = report.WordCount;
             item.SourceLanguageId = _settings.Languages[report.SourceLang];
             item.FeedbackTypeValue = _settings.FeedbackType;

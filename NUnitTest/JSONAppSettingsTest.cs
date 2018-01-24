@@ -17,7 +17,7 @@ namespace NUnitTest
         JSONAppSettings settings;
         [SetUp]
         public void Init()
-        {
+        { 
             settings = new JSONAppSettings();
         }
 
@@ -31,15 +31,24 @@ namespace NUnitTest
         [Test]
         public void TestCorrectJsonRead()
         {
-            Assert.IsTrue(settings.Any(s => s.Name == "Google"));
+            Assert.IsTrue(settings.Any(s => s.Name == "Default Profile"));
         }
 
         [Test]
         public void TestJsonRead_slash()
         {
             string exp = @"Word Count:\s(\w*)\s\((\w*)";
-            string actual = settings.FirstOrDefault(s => s.Name == "Google").WordCount.Pattern;
+            string actual = settings.FirstOrDefault(s => s.Name == "Default Profile").WordCount.Pattern;
             Assert.AreEqual(exp, actual);
         }
+
+        [Test]
+        public void Test_UserProfileRead()
+        {
+            Assert.IsTrue(settings.Any(s => s.Name == "TestProfile"));
+            
+        }
+
+
     }
 }

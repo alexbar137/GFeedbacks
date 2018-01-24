@@ -8,6 +8,7 @@ using GFeedbacks.Interfaces;
 
 namespace GFeedbacks.Implementations
 {
+    [Serializable]
     public class JSONSettings : ISetting
     {
         public string Name { get; set; }

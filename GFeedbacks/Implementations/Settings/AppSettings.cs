@@ -11,6 +11,8 @@ using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Collections;
 using System.Reflection;
 using Newtonsoft.Json;
+using GFeedbacks.Implementations.Settings;
+using System.Configuration;
 
 namespace GFeedbacks.Implementations
 {
@@ -26,39 +28,28 @@ namespace GFeedbacks.Implementations
 
         internal void GetSettings()
         {
-
-
-            string path = GetFullPath(Properties.Settings.Default.SettingsPath);
-
-            foreach (string line in File.ReadLines(path))
+            ISetting defaultProfile = SettingUtilities.GetSettingsFromJson(Properties.Resources.DefaultProfile);
+            _settingsList.Add(defaultProfile);
+            foreach (SettingsProperty setting in Properties.Profiles.Default.Properties)
             {
-                string filePath = GetFullPath(line);
-                JSONSettings setting;
-                try
+                if(setting.DefaultValue != null)
                 {
-                    
-                    using (StreamReader file = File.OpenText(filePath))
-                    {
-                        JsonSerializer serializer = new JsonSerializer();
-                        setting = (JSONSettings)serializer.Deserialize(file, typeof(JSONSettings));
-                        _settingsList.Add(setting);
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    ErrorLogger.LogError(e);
+                    ISetting profile = SettingUtilities.GetSettingsFromJson(setting.DefaultValue.ToString());
+                    _settingsList.Add(profile);
                 }
 
             }
+
         }
 
+        /*
         internal string GetFullPath(string relativePath)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             string directoryPath = Path.GetDirectoryName(new Uri(assembly.CodeBase).LocalPath);
             return Path.GetFullPath(Path.Combine(directoryPath, relativePath));
         }
+        */
 
 
 

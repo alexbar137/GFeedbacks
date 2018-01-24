@@ -35,20 +35,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GFeedbackRibbon));
-            this.tab1 = this.Factory.CreateRibbonTab();
+            this.Feedbacks = this.Factory.CreateRibbonTab();
             this.GFeedback = this.Factory.CreateRibbonGroup();
             this.Settings = this.Factory.CreateRibbonButton();
-            this.tab1.SuspendLayout();
+            this.Feedbacks.SuspendLayout();
             this.GFeedback.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tab1
+            // Feedbacks
             // 
-            this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tab1.ControlId.OfficeId = "TabMail";
-            this.tab1.Groups.Add(this.GFeedback);
-            this.tab1.Label = "TabMail";
-            this.tab1.Name = "tab1";
+            this.Feedbacks.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.Feedbacks.ControlId.OfficeId = "FeedbacksTab";
+            this.Feedbacks.Groups.Add(this.GFeedback);
+            this.Feedbacks.Label = "Feedbacks";
+            this.Feedbacks.Name = "Feedbacks";
             // 
             // GFeedback
             // 
@@ -68,11 +68,11 @@
             // GFeedbackRibbon
             // 
             this.Name = "GFeedbackRibbon";
-            this.RibbonType = "Microsoft.Outlook.Mail.Read";
-            this.Tabs.Add(this.tab1);
+            this.RibbonType = "Microsoft.Outlook.Explorer";
+            this.Tabs.Add(this.Feedbacks);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.GFeedbackRibbon_Load);
-            this.tab1.ResumeLayout(false);
-            this.tab1.PerformLayout();
+            this.Feedbacks.ResumeLayout(false);
+            this.Feedbacks.PerformLayout();
             this.GFeedback.ResumeLayout(false);
             this.GFeedback.PerformLayout();
             this.ResumeLayout(false);
@@ -81,7 +81,7 @@
 
         #endregion
 
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab Feedbacks;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup GFeedback;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton Settings;
     }

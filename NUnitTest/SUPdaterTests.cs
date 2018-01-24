@@ -26,11 +26,7 @@ namespace NUnitTest
             updater = new SPUpdater(utilities);
         }
 
-        [Test]
-        public void Test_Map()
-        {
 
-        }
 
     }
 }

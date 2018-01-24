@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.Implementations
 {
+    [Serializable]
     public class ParsingItem : IParsingItem
     {
         public string Name { get; set; }
