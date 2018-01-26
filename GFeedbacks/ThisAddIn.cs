@@ -14,18 +14,18 @@ namespace GFeedbacks
     public partial class ThisAddIn
     {
         Outlook.MAPIFolder inBox;
-        IAppSettings settings;
+        public IAppSettings Settings { get; private set; }
 
         internal void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             GetFolders();
-            settings = new JSONAppSettings();
+            Settings = new JSONAppSettings();
             inBox.Items.ItemAdd += new Outlook.ItemsEvents_ItemAddEventHandler(Items_ItemAdd);
         }
 
         internal void Items_ItemAdd(object Item)
         {
-            IProcessor pr = new Processor(settings)
+            IProcessor pr = new Processor(Settings)
             {
                 Root = Application.ActiveExplorer().Session.Folders
             };

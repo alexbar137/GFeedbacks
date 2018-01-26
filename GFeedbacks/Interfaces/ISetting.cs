@@ -25,5 +25,8 @@ namespace GFeedbacks.Interfaces
         Dictionary<string, int> Languages { get; set; }
         string SharePointSite { get; set; }
         string FeedbackType { get; set; }
+        bool MooveMail { get; set; }
+        bool SaveReports { get; set; }
+        bool SaveLogs { get; set; }
     }
 }

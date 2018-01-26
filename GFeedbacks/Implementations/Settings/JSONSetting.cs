@@ -30,6 +30,9 @@ namespace GFeedbacks.Implementations
         public Dictionary<string, int> Languages { get; set; }
         public string SharePointSite { get; set; }
         public string FeedbackType { get; set; }
+        public bool MooveMail { get; set; }
+        public bool SaveReports { get; set; }
+        public bool SaveLogs { get; set; }
     }
 
 }

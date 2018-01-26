@@ -49,6 +49,13 @@ namespace NUnitTest
             
         }
 
+        [TestCase("Default Profile")]
+        [TestCase("TestProfile")]
+        public void Test_Names(string name)
+        {
+            Assert.IsTrue(settings.Names.Any(s => s == name));
+        }
+
 
     }
 }

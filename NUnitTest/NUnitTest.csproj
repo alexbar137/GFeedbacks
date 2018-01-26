@@ -84,7 +84,6 @@
     <Compile Include="JSONAppSettingsTest.cs" />
     <Compile Include="SharePointContextTests.cs" />
     <Compile Include="SUPdaterTests.cs" />
-    <Compile Include="TestResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

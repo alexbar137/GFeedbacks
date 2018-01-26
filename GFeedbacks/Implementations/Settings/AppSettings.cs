@@ -19,6 +19,13 @@ namespace GFeedbacks.Implementations
     public class JSONAppSettings: IAppSettings
     {
         internal List<ISetting> _settingsList { get; set; }
+        public List<string> Names
+        {
+            get
+            {
+                return _settingsList.Select((s) => (s.Name)).ToList();
+            }
+        }
 
         public JSONAppSettings()
         {

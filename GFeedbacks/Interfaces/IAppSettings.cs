@@ -10,5 +10,8 @@ namespace GFeedbacks.Interfaces
     public interface IAppSettings: IEnumerable<ISetting>
     {
         new IEnumerator<ISetting> GetEnumerator();
+        List<string> Names { get;}
     }
+
+    
 }

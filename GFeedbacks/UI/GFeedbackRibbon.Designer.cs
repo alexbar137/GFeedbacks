@@ -37,8 +37,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GFeedbackRibbon));
             this.Feedbacks = this.Factory.CreateRibbonTab();
             this.GFeedback = this.Factory.CreateRibbonGroup();
-            this.Settings = this.Factory.CreateRibbonButton();
             this.button1 = this.Factory.CreateRibbonButton();
+            this.Settings = this.Factory.CreateRibbonButton();
             this.Feedbacks.SuspendLayout();
             this.GFeedback.SuspendLayout();
             this.SuspendLayout();
@@ -56,14 +56,6 @@
             this.GFeedback.Label = "Feedbacks";
             this.GFeedback.Name = "GFeedback";
             // 
-            // Settings
-            // 
-            this.Settings.Image = ((System.Drawing.Image)(resources.GetObject("Settings.Image")));
-            this.Settings.Label = "Settings";
-            this.Settings.Name = "Settings";
-            this.Settings.ShowImage = true;
-            this.Settings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
-            // 
             // button1
             // 
             this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -71,6 +63,14 @@
             this.button1.Label = "Send to SharePoint";
             this.button1.Name = "button1";
             this.button1.ShowImage = true;
+            // 
+            // Settings
+            // 
+            this.Settings.Image = ((System.Drawing.Image)(resources.GetObject("Settings.Image")));
+            this.Settings.Label = "Settings";
+            this.Settings.Name = "Settings";
+            this.Settings.ShowImage = true;
+            this.Settings.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
             // GFeedbackRibbon
             // 
