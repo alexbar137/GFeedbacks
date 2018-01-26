@@ -19,6 +19,8 @@ namespace GFeedbacks.UI
             _controller = controller;
             InitializeComponent();
             cmbProfiles.DataSource = controller.Settings.Names;
+            _controller.CurrentProfileName = cmbProfiles.SelectedText;
+            lblProfileName.Text = _controller.CurrentProfileName;
             
             
         }
@@ -79,6 +81,11 @@ namespace GFeedbacks.UI
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
         {
 
         }
