@@ -166,6 +166,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -213,6 +214,7 @@
   -->
   <ItemGroup>
     <Compile Include="Implementations\Settings\SettingUtilities.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\Profiles.cs" />
     <Compile Include="Properties\Profiles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -223,6 +225,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\SettingsControl.xaml.cs">
+      <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\SettingsController.cs" />
     <Compile Include="UI\GFeedbackRibbon.cs">
@@ -261,6 +266,12 @@
     <Compile Include="UI\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SettingsWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SettingsWinForm.Designer.cs">
+      <DependentUpon>SettingsWinForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
@@ -281,10 +292,14 @@
     <EmbeddedResource Include="UI\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingsWinForm.resx">
+      <DependentUpon>SettingsWinForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="GFeedbacks_1_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GFeedbacks.Implementations.JSONAppSettings.datasource" />
+    <None Include="Properties\DataSources\GFeedbacks.SharePointLQASite.FreelancersDataContext.datasource" />
     <None Include="Properties\DataSources\GFeedbacks.UI.SettingsForm.datasource" />
     <None Include="Properties\Profiles.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -345,6 +360,12 @@
     <ServiceReferenceMetadataStorage Include="Service References\SharePointLQASite\">
       <Type>datasvcmap</Type>
     </ServiceReferenceMetadataStorage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="UI\Controls\SettingsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
