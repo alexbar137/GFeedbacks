@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Office.Tools.Ribbon;
 using GFeedbacks.UI;
+using GFeedbacks.UI.ViewModels;
 
 namespace GFeedbacks
 {
@@ -16,7 +17,8 @@ namespace GFeedbacks
 
         private void button1_Click(object sender, RibbonControlEventArgs e)
         {
-            SettingsController controller = new SettingsController();
+            ShellViewModel settingsForm = new ShellViewModel();
+            Globals.ThisAddIn.WinManager.ShowDialog(settingsForm);
         }
     }
 }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.Interfaces
 {
-    public interface IAppSettings: IEnumerable<ISetting>
+    public interface IAppSettings: IEnumerable<IProfile>
     {
-        new IEnumerator<ISetting> GetEnumerator();
-        List<string> Names { get;}
+        new IEnumerator<IProfile> GetEnumerator();
+        //List<string> Names { get;}
     }
 
     

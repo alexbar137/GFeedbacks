@@ -8,6 +8,8 @@ using Office = Microsoft.Office.Core;
 using System.Threading.Tasks;
 using GFeedbacks.Implementations;
 using GFeedbacks.Interfaces;
+using GFeedbacks.UI;
+using Caliburn.Micro;
 
 namespace GFeedbacks
 {
@@ -15,6 +17,8 @@ namespace GFeedbacks
     {
         Outlook.MAPIFolder inBox;
         public IAppSettings Settings { get; private set; }
+        public Boostrapper Btsrpr = new Boostrapper();
+        public IWindowManager WinManager = new WindowManager();
 
         internal void ThisAddIn_Startup(object sender, System.EventArgs e)
         {

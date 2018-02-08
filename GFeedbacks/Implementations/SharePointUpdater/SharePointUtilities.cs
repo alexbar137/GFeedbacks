@@ -12,9 +12,9 @@ namespace GFeedbacks.Implementations.SharePointUpdater
     public class SharePointUtilities
     {
         public FreelancersDataContext Context{ get; }
-        public ISetting Settings { get; }
+        public IProfile Settings { get; }
 
-        public SharePointUtilities(ISetting settings)
+        public SharePointUtilities(IProfile settings)
         {
             Context = new FreelancersDataContext(new Uri(settings.SharePointSite))
             {

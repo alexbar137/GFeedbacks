@@ -18,7 +18,7 @@ namespace GFeedbacks.Implementations.SharePointUpdater
             {LQAResult.Recall, "Recall" }
         };
         internal SharePointUtilities _utils;
-        internal ISetting _settings;
+        internal IProfile _settings;
         public SPUpdater(SharePointUtilities utils)
         {
             _utils = utils;

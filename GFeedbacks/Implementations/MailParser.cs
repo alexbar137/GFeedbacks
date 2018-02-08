@@ -14,13 +14,13 @@ namespace GFeedbacks.Implementations
     /// </summary>
     class MailParser : IParser
     {
-        internal ISetting _settings;
+        internal IProfile _settings;
 
         /// <summary>
         /// Parses email message with LQA report
         /// </summary>
         /// <param name="settings">App settings with parsing options</param>
-        public MailParser(ISetting settings)
+        public MailParser(IProfile settings)
         {
             _settings = settings;
         }

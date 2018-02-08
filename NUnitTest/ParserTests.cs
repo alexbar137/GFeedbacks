@@ -19,7 +19,7 @@ namespace NUnitTest
         static MailItem secondMail = Substitute.For<MailItem>();
         static MailItem emptyMail = Substitute.For<MailItem>();
 
-        ISetting settings;
+        IProfile settings;
 
         
         [SetUp]
@@ -50,7 +50,7 @@ namespace NUnitTest
             emptyMail.Subject.Returns("");
             emptyMail.Body.Returns("");
 
-            settings = Substitute.For<ISetting>();
+            settings = Substitute.For<IProfile>();
             ParsingItem targetLang = new ParsingItem()
             {
                 Pattern = @"^\D{2}",

@@ -16,11 +16,11 @@ namespace NUnitTest
     {
         SharePointUtilities utilities;
         SPUpdater updater;
-        ISetting setting;
+        IProfile setting;
         [SetUp]
         public void Init()
         {
-            setting = Substitute.For<ISetting>();
+            setting = Substitute.For<IProfile>();
             utilities = Substitute.For<SharePointUtilities>(setting);
             
             updater = new SPUpdater(utilities);

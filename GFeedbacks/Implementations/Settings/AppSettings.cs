@@ -18,31 +18,24 @@ namespace GFeedbacks.Implementations
 {
     public class JSONAppSettings: IAppSettings
     {
-        internal List<ISetting> _settingsList { get; set; }
-        public List<string> Names
-        {
-            get
-            {
-                return _settingsList.Select((s) => (s.Name)).ToList();
-            }
-        }
+        internal List<IProfile> _profilesList { get; set; }
 
         public JSONAppSettings()
         {
-            _settingsList = new List<ISetting>();
-            GetSettings();
+            _profilesList = new List<IProfile>();
+            GetProfiles();
         }
 
-        internal void GetSettings()
+        internal void GetProfiles()
         {
-            ISetting defaultProfile = SettingUtilities.GetSettingsFromJson(Properties.Resources.DefaultProfile);
-            _settingsList.Add(defaultProfile);
+            IProfile defaultProfile = JsonProfileHelper.GetProfileFromJson(Properties.Resources.DefaultProfile);
+            _profilesList.Add(defaultProfile);
             foreach (SettingsProperty setting in Properties.Profiles.Default.Properties)
             {
                 if(setting.DefaultValue != null)
                 {
-                    ISetting profile = SettingUtilities.GetSettingsFromJson(setting.DefaultValue.ToString());
-                    _settingsList.Add(profile);
+                    IProfile profile = JsonProfileHelper.GetProfileFromJson(setting.DefaultValue.ToString());
+                    _profilesList.Add(profile);
                 }
 
             }
@@ -60,14 +53,14 @@ namespace GFeedbacks.Implementations
 
 
 
-        public IEnumerator<ISetting> GetEnumerator()
+        public IEnumerator<IProfile> GetEnumerator()
         {
-            foreach (JSONSettings s in _settingsList) yield return s;
+            foreach (JSONProfile s in _profilesList) yield return s;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            foreach (JSONSettings s in _settingsList) yield return s;
+            foreach (JSONProfile s in _profilesList) yield return s;
         }
 
 

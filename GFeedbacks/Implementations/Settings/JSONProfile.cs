@@ -9,7 +9,7 @@ using GFeedbacks.Interfaces;
 namespace GFeedbacks.Implementations
 {
     [Serializable]
-    public class JSONSettings : ISetting
+    public class JSONProfile : IProfile
     {
         public string Name { get; set; }
         public string TargetMailFolder { get; set; }

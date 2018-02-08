@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace GFeedbacks.Interfaces
 {
-    public interface ISetting
+    public interface IProfile
     {
         int Account { get; set; }
         int Client { get; set; }

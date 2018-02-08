@@ -24,7 +24,7 @@ namespace GFeedbacks.Implementations
 
         public void Process(MailItem item)
         {
-            ISetting setting = Select(item);
+            IProfile setting = Select(item);
             if(setting != null)
             {
                 IMover mv = new Mover(Root);
@@ -39,9 +39,9 @@ namespace GFeedbacks.Implementations
             }
         }
 
-        internal ISetting Select(MailItem item)
+        internal IProfile Select(MailItem item)
         {
-            foreach (ISetting d in _settings)
+            foreach (IProfile d in _settings)
             {
                 if (item.SenderEmailAddress == d.Email &&
                     item.Subject.Contains(d.Subj)) return d;

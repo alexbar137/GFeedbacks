@@ -9,35 +9,35 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.Implementations.Settings
 {
-    public static class SettingUtilities
+    public static class JsonProfileHelper 
     {
-        public static ISetting GetSettingsFromJson(string path)
+        public static IProfile GetProfileFromJson(string path)
         {
-            JSONSettings setting;
+            JSONProfile setting;
             using (StreamReader file = File.OpenText(path))
             {
 
                 JsonSerializer serializer = new JsonSerializer();
-                setting = (JSONSettings)serializer.Deserialize(file, typeof(JSONSettings));
+                setting = (JSONProfile)serializer.Deserialize(file, typeof(JSONProfile));
             }
 
             return setting;
         }
 
-        public static ISetting GetSettingsFromJson(byte[] str)
+        public static IProfile GetProfileFromJson(byte[] str)
         {
-            JSONSettings setting;
+            JSONProfile setting;
             using (StreamReader file = new StreamReader(new MemoryStream(str)))
             {
 
                 JsonSerializer serializer = new JsonSerializer();
-                setting = (JSONSettings)serializer.Deserialize(file, typeof(JSONSettings));
+                setting = (JSONProfile)serializer.Deserialize(file, typeof(JSONProfile));
             }
 
             return setting;
         }
 
-        public static void Save(ISetting setting, string path)
+        public static void Save(IProfile setting, string path)
         {
             throw new NotImplementedException();
         }

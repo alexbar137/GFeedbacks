@@ -12,12 +12,12 @@ namespace NUnitTest
     public class SharePointContextTests
     {
         SharePointUtilities pr;
-        ISetting settings;
+        IProfile settings;
 
         [SetUp]
         public void Init()
         {
-            settings = Substitute.For<ISetting>();
+            settings = Substitute.For<IProfile>();
             settings.SharePointSite.Returns(@"http://inside.office.palex/lqa/_vti_bin/ListData.svc");
         }
 

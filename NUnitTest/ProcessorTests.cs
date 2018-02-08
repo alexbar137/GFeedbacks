@@ -14,16 +14,16 @@ namespace NUnitTest
     public class ProcessorTests
     {
         IAppSettings settings;
-        List<JSONSettings> settingsList;
+        List<JSONProfile> settingsList;
 
         [SetUp]
         public void Init()
         {
             
-            settingsList = new List<JSONSettings>
+            settingsList = new List<JSONProfile>
             {
-                new JSONSettings() {Email = "Hello", Subj = "Buy" },
-                new JSONSettings() {Email = "Bonjour", Subj = "Arevour" }
+                new JSONProfile() {Email = "Hello", Subj = "Buy" },
+                new JSONProfile() {Email = "Bonjour", Subj = "Arevour" }
             };
 
             settings = Substitute.For<IAppSettings>();
@@ -31,9 +31,9 @@ namespace NUnitTest
 
         }
 
-        public IEnumerator<JSONSettings> Iterate()
+        public IEnumerator<JSONProfile> Iterate()
         {
-            foreach (JSONSettings s in settingsList) yield return s;
+            foreach (JSONProfile s in settingsList) yield return s;
         }
 
 
