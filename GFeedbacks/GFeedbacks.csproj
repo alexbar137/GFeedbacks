@@ -232,6 +232,10 @@
   -->
   <ItemGroup>
     <Compile Include="Implementations\Settings\SettingUtilities.cs" />
+    <Compile Include="Implementations\SharePointRepositories\BaseSharePointRepository.cs" />
+    <Compile Include="Implementations\SharePointRepositories\PmRepository.cs" />
+    <Compile Include="Implementations\SharePointRepositories\TeamsRepository.cs" />
+    <Compile Include="Interfaces\ISharePointRepository.cs" />
     <Compile Include="Properties\Profiles.cs" />
     <Compile Include="Properties\Profiles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -242,6 +246,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ListsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="UI\Boostrapper.cs" />
     <Compile Include="UI\SettingForm.cs">
@@ -280,6 +289,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI\ViewModels\BaseProfileScreen.cs" />
     <Compile Include="UI\ViewModels\FoldersViewModel.cs" />
     <Compile Include="UI\ViewModels\ParsingViewModel.cs" />
     <Compile Include="UI\ViewModels\ProjectViewModel.cs" />
@@ -343,7 +353,111 @@
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.AddAttachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.AddDiscussionBoardItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.AddListFromFeatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.AddListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.AddWikiPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.ApplyContentTypeToListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.CheckInFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.CheckOutFileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.CreateContentTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.DeleteAttachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.DeleteContentTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.DeleteContentTypeXmlDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.DeleteListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetAttachmentCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListAndViewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListContentTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListContentTypesAndPropertiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListContentTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListItemChangesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListItemChangesSinceTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListItemChangesWithKnowledgeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.GetVersionCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UndoCheckOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UpdateContentTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UpdateContentTypesXmlDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UpdateContentTypeXmlDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UpdateListItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UpdateListItemsWithKnowledgeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\GFeedbacks.ListsService.UpdateListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ListsService\Lists.wsdl" />
     <None Include="Service References\SharePointLQASite\service.edmx" />
+    <None Include="Service References\ListsService\Lists.disco" />
+    <None Include="Service References\ListsService\configuration91.svcinfo" />
+    <None Include="Service References\ListsService\configuration.svcinfo" />
+    <None Include="Service References\ListsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SettingsFolder\TestProfile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -401,6 +515,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ListsService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace GFeedbacks.UI.ViewModels
 {
-    class ProjectViewModel : BaseProfileScreen
+    abstract public class BaseProfileScreen : Screen
     {
-        
-        public ProjectViewModel(IProfile profile) : base (profile)
+        public IProfile Profile { get; set; }
+        public BaseProfileScreen(IProfile profile)
         {
-            DisplayName = "Project";
+            Profile = profile;
         }
     }
 }

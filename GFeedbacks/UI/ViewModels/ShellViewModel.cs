@@ -41,9 +41,9 @@ namespace GFeedbacks.UI.ViewModels
 
         protected override void OnInitialize()
         {
-            _projectViewModel = new ProjectViewModel();
-            _foldersViewModel = new FoldersViewModel();
-            _parsingViewModel = new ParsingViewModel();
+            _projectViewModel = new ProjectViewModel(SelectedProfile);
+            _foldersViewModel = new FoldersViewModel(SelectedProfile);
+            _parsingViewModel = new ParsingViewModel(SelectedProfile);
             Items.Add(_projectViewModel);
             Items.Add(_foldersViewModel);
             Items.Add(_parsingViewModel);

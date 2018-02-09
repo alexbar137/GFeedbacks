@@ -22,5 +22,14 @@ namespace GFeedbacks.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        public string RowLimit {
+            get {
+                return ((string)(this["RowLimit"]));
+            }
+        }
     }
 }
